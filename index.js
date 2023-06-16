@@ -5,12 +5,12 @@ function addUser() {
   const user = userInput.value.trim();
   
   if (user === '') {
-    alert('Please enter a user name.');
+    alert('Please enter a child name.');
     return;
   }
   
   if (user in balances) {
-    alert('User already exists.');
+    alert('Child already exists.');
     return;
   }
   
@@ -19,12 +19,12 @@ function addUser() {
   
   updateBalanceList();
   
-  alert('User added successfully.');
+  alert('Child added successfully.');
 }
 
 function incrementBalance(user) {
   if (!(user in balances)) {
-    alert('User does not exist.');
+    alert('Child does not exist.');
     return;
   }
   
@@ -35,7 +35,7 @@ function incrementBalance(user) {
 
 function decrementBalance(user) {
   if (!(user in balances)) {
-    alert('User does not exist.');
+    alert('Child does not exist.');
     return;
   }
   
@@ -45,11 +45,11 @@ function decrementBalance(user) {
 }
 
 function clearUser(user) {
-  if (confirm('Are you sure you want to clear this user?')) {
+  if (confirm('Are you sure you want to remove this child?')) {
     delete balances[user];
     localStorage.setItem('balances', JSON.stringify(balances));
     updateBalanceList();
-    alert('User cleared.');
+    alert('Child removed.');
   }
 }
 
@@ -81,7 +81,7 @@ function updateBalanceList() {
     decrementButton.onclick = function() { decrementBalance(user); };
 
     const clearButton = document.createElement('button');
-    clearButton.textContent = 'Clear User';
+    clearButton.textContent = 'Remove Child';
     clearButton.className = 'balance-button clear-button';
     clearButton.onclick = function() { clearUser(user); };
 

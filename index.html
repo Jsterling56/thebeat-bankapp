@@ -7,78 +7,100 @@
       font-family: Arial, sans-serif;
       background-color: #F68712;
     }
-    
-    #input {
-      margin-bottom: 10px;
-    }
-    
+
     .center-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      margin-top: 50px;
     }
-    
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+
+    .balances-table {
+      margin-top: 20px;
+    }
+
     table {
       border-collapse: collapse;
       width: 100%;
     }
-    
+
     th, td {
-      border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
+      border-bottom: 1px solid #ddd;
     }
-    
+
     th {
       background-color: #f2f2f2;
+    }
+
+    .balance-button {
+      margin-right: 5px;
+    }
+
+    .increment-button {
+      background-color: rgb(0, 103, 0);
+      color: white;
       font-weight: bold;
     }
-    
-    .balances-table {
-      width: 400px;
-      margin-top: 20px;
-    }
-    
-    .balance-button {
-      padding: 4px 8px;
-      margin-right: 5px;
-      cursor: pointer;
-    }
-    
-    .increment-button {
-      background-color: rgb(0, 192, 0);
-      color: white;
-    }
-    
+
     .decrement-button {
-      background-color: rgb(214, 0, 0);
+      background-color: rgb(184, 0, 0);
       color: white;
+      font-weight: bold;
+    }
+
+    .clear-button {
+      background-color: rgb(255, 248, 153);
+      color: black;
+      font-weight: bold;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-wrapper img {
+      max-width: 100%;
     }
     
-    .clear-button {
-      background-color: #d5d5d5;
-      color: black;
-    }
   </style> 
 </head>
 <body>
-  <img src="./thebeat-bankapp/The Beat logo.png" alt="The Beat's logo">
+  <div class="logo-wrapper">
+  <img src="./The Beat logo - Black.png" alt="The Beat's logo">
+  </div>
   <div class="center-wrapper">
     <h1>The Beat Bank</h1>
   
-    <label for="user">Child's Name:</label>
+    <label for="user">Child:</label>
     <input type="text" id="user">
     <button onclick="addUser()">Add Child</button>
   
-    <h2>User Balances</h2>
+    <h2>Child Balances</h2>
     <div class="balances-table">
       <table id="userBalances">
         <thead>
           <tr>
-            <th>User</th>
+            <th>Child</th>
             <th>Balance</th>
             <th>Actions</th>
           </tr>
