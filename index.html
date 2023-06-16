@@ -1,57 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>The Beat Bank</title>
   <style>
     body {
+      font-size: 16px;
       font-family: Arial, sans-serif;
       background-color: #F68712;
     }
 
-    .center-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    h1 {
-      margin-bottom: 20px;
+    .input-container {
+      margin-bottom: 16px;
     }
 
-    label {
-      margin-right: 10px;
+    .table-container {
+      overflow-x: auto;
     }
 
-    input[type="text"] {
-      margin-right: 10px;
-    }
-
-    button {
-      padding: 5px 10px;
-    }
-
-    .balances-table {
-      margin-top: 20px;
-    }
-
-    table {
-      border-collapse: collapse;
+    .table {
       width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
     }
 
-    th, td {
+    .table th,
+    .table td {
       padding: 8px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f2f2f2;
     }
 
     .balance-button {
-      margin-right: 5px;
+      font-size: 18px;
+      padding: 12px 16px;
+      cursor: pointer;
     }
 
     .increment-button {
@@ -72,44 +60,65 @@
       font-weight: bold;
     }
 
-    .logo-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
+    @media screen and (max-width: 480px) {
+
+      /* Styles for screens with maximum width of 480px (typical mobile devices) */
+      .table th,
+      .table td {
+        padding: 6px;
+      }
+
+      .balance-button {
+        font-size: 16px;
+        padding: 10px 14px;
+      }
     }
 
-    .logo-wrapper img {
+    .user-image {
       max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 16px;
     }
-    
-  </style> 
+
+    .user-image {
+      width: 100%;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="logo-wrapper">
-  <img src="./The Beat logo - Black.png" alt="The Beat's logo">
-  </div>
-  <div class="center-wrapper">
-    <h1>The Beat Bank</h1>
-  
-    <label for="user">Child:</label>
-    <input type="text" id="user">
-    <button onclick="addUser()">Add Child</button>
-  
-    <h2>Child Balances</h2>
-    <div class="balances-table">
-      <table id="userBalances">
-        <thead>
-          <tr>
-            <th>Child</th>
-            <th>Balance</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+  <div class="container">
+    <div class="user-image">
+      <img src="./The Beat logo - Black.png" alt="The Beat's logo">
+    </div>
+    <div class="center-wrapper">
+      <h1>The Beat Bank</h1>
+
+      <div class="input-container">
+        <label for="user">Child:</label>
+        <input type="text" id="user">
+        <button onclick="addUser()">Add Child</button>
+      </div>
+
+      <h2>Child Balances</h2>
+      <div class="balances-table">
+        <table id="userBalances" class="table">
+          <thead>
+            <tr>
+              <th>Child</th>
+              <th>Balance</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <script src="index.js"></script>
 </body>
+
 </html>
