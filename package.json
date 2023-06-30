@@ -1,0 +1,23 @@
+{
+  "name": "thebeat-bankapp",
+  "version": "1.0.0",
+  "description": "The Beat Bank: The Beat Bank is a web application developed for our kid's ministry program that takes place on Wednesday nights at our church. The purpose of creating this page was to provide an easy way to keep track of children's good behavior and ensure that expectations are met.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jsterling56/thebeat-bankapp.git"
+  },
+  "author": "Jonathan Sterling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jsterling56/thebeat-bankapp/issues"
+  },
+  "homepage": "https://github.com/Jsterling56/thebeat-bankapp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

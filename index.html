@@ -8,82 +8,84 @@
       font-size: 16px;
       font-family: Arial, sans-serif;
       background-color: #F68712;
+      margin: 0;
+      padding: 0;
     }
-
+  
     .container {
       max-width: 600px;
       margin: 0 auto;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
+  
     .input-container {
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
     }
-
-    .table-container {
+  
+    .balances-table {
       overflow-x: auto;
+      width: 100%;
     }
-
+  
     .table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 16px;
     }
-
+  
     .table th,
     .table td {
       padding: 8px;
       text-align: left;
     }
-
+  
     .balance-button {
       font-size: 18px;
       padding: 12px 16px;
       cursor: pointer;
     }
-
+  
     .increment-button {
       background-color: rgb(0, 103, 0);
       color: white;
       font-weight: bold;
     }
-
+  
     .decrement-button {
       background-color: rgb(184, 0, 0);
       color: white;
       font-weight: bold;
     }
-
+  
     .clear-button {
       background-color: rgb(255, 248, 153);
       color: black;
       font-weight: bold;
     }
-
+  
+    .user-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 16px;
+    }
+  
     @media screen and (max-width: 480px) {
-
       /* Styles for screens with maximum width of 480px (typical mobile devices) */
       .table th,
       .table td {
         padding: 6px;
       }
-
+  
       .balance-button {
         font-size: 16px;
         padding: 10px 14px;
       }
-    }
-
-    .user-image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 16px;
-    }
-
-    .user-image {
-      width: 100%;
     }
   </style>
 </head>
@@ -95,13 +97,13 @@
     </div>
     <div class="center-wrapper">
       <h1>The Beat Bank</h1>
-
+    
       <div class="input-container">
         <label for="user">Child:</label>
         <input type="text" id="user">
         <button onclick="addUser()">Add Child</button>
       </div>
-
+    
       <h2>Child Balances</h2>
       <div class="balances-table">
         <table id="userBalances" class="table">
