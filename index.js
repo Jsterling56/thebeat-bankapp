@@ -1,106 +1,88 @@
-let balances = {};
-    
-function addUser() {
-  const userInput = document.getElementById('user');
-  const user = userInput.value.trim();
-  
-  if (user === '') {
-    alert('Please enter a child name.');
-    return;
-  }
-  
-  if (user in balances) {
-    alert('Child already exists.');
-    return;
-  }
-  
-  balances[user] = 0;
-  userInput.value = '';
-  
-  updateBalanceList();
-  
-  alert('Child added successfully.');
-}
-
-function incrementBalance(user) {
-  if (!(user in balances)) {
-    alert('Child does not exist.');
-    return;
-  }
-  
-  balances[user] += 1;
-  localStorage.setItem('balances', JSON.stringify(balances));
-  updateBalanceList();
-}
-
-function decrementBalance(user) {
-  if (!(user in balances)) {
-    alert('Child does not exist.');
-    return;
-  }
-  
-  balances[user] -= 1;
-  localStorage.setItem('balances', JSON.stringify(balances));
-  updateBalanceList();
-}
-
-function clearUser(user) {
-  if (confirm('Are you sure you want to remove this child?')) {
-    delete balances[user];
-    localStorage.setItem('balances', JSON.stringify(balances));
+window.addEventListener('load', function () {
     updateBalanceList();
-    alert('Child removed.');
-  }
-}
-
-function updateBalanceList() {
-  const userBalancesElement = document.querySelector('#userBalances tbody');
-  userBalancesElement.innerHTML = '';
-
-  const sortedUsers = Object.keys(balances).sort();
-
-  for (const user of sortedUsers) {
-    const row = document.createElement('tr');
-
-    const userCell = document.createElement('td');
-    userCell.textContent = user;
-
-    const balanceCell = document.createElement('td');
-    balanceCell.textContent = '$' + Math.round(balances[user]);
-
-    const actionsCell = document.createElement('td');
-
-    const incrementButton = document.createElement('button');
-    incrementButton.textContent = '+';
-    incrementButton.className = 'balance-button increment-button';
-    incrementButton.onclick = function() { incrementBalance(user); };
-
-    const decrementButton = document.createElement('button');
-    decrementButton.textContent = '-';
-    decrementButton.className = 'balance-button decrement-button';
-    decrementButton.onclick = function() { decrementBalance(user); };
-
-    const clearButton = document.createElement('button');
-    clearButton.textContent = 'Remove Child';
-    clearButton.className = 'balance-button clear-button';
-    clearButton.onclick = function() { clearUser(user); };
-
-    actionsCell.appendChild(incrementButton);
-    actionsCell.appendChild(decrementButton);
-    actionsCell.appendChild(clearButton);
-
-    row.appendChild(userCell);
-    row.appendChild(balanceCell);
-    row.appendChild(actionsCell);
-
-    userBalancesElement.appendChild(row);
-  }
-}
-
-window.addEventListener('load', function() {
-  balances = JSON.parse(localStorage.getItem('balances')) || {};
-  updateBalanceList();
   
-  const userInput = document.getElementById('user');
-  userInput.focus();
-});
+    const userInput = document.getElementById('user');
+    userInput.focus();
+  });
+
+  function addUser() {
+    const userInput = document.getElementById('user');
+    const user = userInput.value.trim();
+    if (user === '') {
+      alert('Please enter a child name.');
+      return;
+    }
+    // Send a POST request to the server to add the user to the database
+    fetch('/addUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // User added successfully, update the balance list
+          updateBalanceList();
+        } else {
+          // Handle the case where user addition failed
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding user:', error);
+        alert('An error occurred while adding the user.');
+      });
+    // Clear the input field
+    userInput.value = '';
+  }
+
+  
+  function incrementBalance(user) {
+    // Perform the necessary actions to increment the balance of the user in the database
+    // ...
+  
+    // Update the balance list
+    updateBalanceList();
+  }
+  
+  function decrementBalance(user) {
+    // Perform the necessary actions to decrement the balance of the user in the database
+    // ...
+  
+    // Update the balance list
+    updateBalanceList();
+  }
+  
+  function clearUser(user) {
+    if (confirm('Are you sure you want to remove this child?')) {
+      // Perform the necessary actions to remove the user from the database
+      // ...
+  
+      // Update the balance list
+      updateBalanceList();
+    }
+  }
+  
+  function updateBalanceList() {
+    const userBalancesElement = document.querySelector('#userBalances tbody');
+    userBalancesElement.innerHTML = '';
+  
+    // Fetch the balance list from the server/database
+    // ...
+  
+    // Iterate over the balance list and update the HTML table
+    // ...
+  
+    // Example structure for updating the balance list in the HTML table:
+    /*
+    for (const user of balanceList) {
+      const row = document.createElement('tr');
+      // Create and append table cells for each data (user, balance, actions)
+      // ...
+  
+      userBalancesElement.appendChild(row);
+    }
+    */
+  }
