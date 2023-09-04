@@ -17,6 +17,18 @@ const Child = sequelize.define('child', {
     allowNull: false,
     defaultValue: 0,
   },
-});
+  // balance_id:{
+  //   type: DataTypes.INTEGER, 
+  //   references: {
+  //     model: 'Balance',
+  //     key: 'id'
+  //   }
+  // }
+},
+// { 
+//   sequelize,
+//   modelName: 'child'
+// }
+);
 
 module.exports = Child;

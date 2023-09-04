@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const  Balance = require('../models//Balance'); // Import the Sequelize model
+const { Balance, Child } = require('../models/'); // Import the Sequelize model
 
 // Route to add a child
-router.post('/addChild', async (req, res) => {
+router.post('/balance/addChild', async (req, res) => {
   const { childName } = req.body;
 
   if (!childName) {
@@ -11,7 +11,7 @@ router.post('/addChild', async (req, res) => {
   }
 
   try {
-    const newBalance = await Balance.create({ user: childName, balance: 0 });
+    const newBalance = await Child.create({ name: childName });
     res.json({ success: true, message: 'Child added successfully.', balance: newBalance });
   } catch (error) {
     console.error('Error adding child to the database:', error);
@@ -70,4 +70,19 @@ router.post('/decrementBalance', async (req, res) => {
   }
 });
 
+router.get('/balance/getData', async (req, res) => {
+  try {
+    const childData = await Child.findAll({})
+    console.log(childData);
+    res.status(200).json(childData);
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
 module.exports = router;
+
+// local storage get to render information to the page
+// get fetch in public/index.js 
+// take names, render those in html
+// append

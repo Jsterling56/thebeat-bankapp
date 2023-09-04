@@ -1,7 +1,6 @@
-
 const express = require('express');
 const app = express();
-const balanceRoutes = require('./routes/balance');
+const balanceRoutes = require('./routes/balances');
 
 
 function addChild() {
@@ -148,3 +147,27 @@ function addChild() {
         alert('An error occurred.');
       });
   }
+function queryChildren() {
+  fetch('/balance/getData', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      if (data.success) {
+        alert(data.message);
+        // Perform any other necessary actions or updates
+      } else {
+        alert('Error getting data.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred.');
+    });
+  }
+
+queryChildren();
